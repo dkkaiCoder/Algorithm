@@ -8,19 +8,25 @@ package binarySystem.bitoperation;
 public class NearTwoPower {
 
     //整体算法思路：
-    //
+    //就是把一个数最高位的1及其右边都刷为1 然后在此基础上加1
+    //但是该问题是要大于等于的情况  因此如果刚好就是2的次幂需要n--来保证它不发生进位
     public static int nearTwoPower(int n){
         //如果这个整数n小于等于0 而2的最小次幂为1  直接返回1就好了
         if(n<=0){
             return 1;
         }
         n--;
-        n |= n >>> 1;
-        n |= n >>> 2;
-        n |= n >>> 4;
-        n |= n >>> 8;
-        n |= n >>> 16;
-        return n + 1;
+        n|=n>>>1;
+        n|=n>>>2;
+        n|=n>>>4;
+        n|=n>>>8;
+        n|=n>>>16;
+        return n+1;
+    }
+
+    public static void main(String[] args) {
+        int a=100;
+        System.out.println(nearTwoPower(a));
     }
 
 }
